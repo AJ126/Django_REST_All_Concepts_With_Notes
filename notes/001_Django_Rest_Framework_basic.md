@@ -1,4 +1,4 @@
-# Introduction to API, REST API, JSON and Django REST Framework (DRF)
+# Introduction to API, Web API, REST API, JSON and Django REST Framework (DRF)
 
 ## 1. What is an API?
 
@@ -69,7 +69,187 @@ Instead of directly accessing Django's database, Angular sends an HTTP request t
 
 ---
 
-## 2. What is a REST API?
+## 2. What is a Web API / Web Service?
+
+A **Web API** is an interface that allows applications to communicate and exchange information over the web using HTTP.
+
+In simple words, it allows different applications to communicate over the internet or a network.
+
+**Example:**
+
+- Angular frontend sends an HTTP request.
+- Django backend receives the request.
+- Django processes the request and sends a response.
+
+This communication happens through a Web API.
+
+**Important:** A Web API is an API that is accessible over the web. Web services are commonly used to provide application-to-application communication over a network.
+
+### Install Markdown Package
+
+Django REST Framework provides a browsable API interface that allows developers to interact with APIs through a web browser.
+
+To enable Markdown support in the browsable API, install the Markdown package.
+
+**Command:**
+
+```bash
+pip install markdown
+```
+
+---
+
+## 3. Types of Web Services
+
+There are two commonly discussed types of web services:
+
+1. SOAP-Based Web Services
+2. RESTful Web Services
+
+### 3.1 SOAP-Based Web Services
+
+SOAP stands for **Simple Object Access Protocol**.
+
+SOAP is an XML-based messaging protocol used for exchanging information between applications.
+
+To describe SOAP-based web services, we use a special language called:
+
+**WSDL (Web Services Description Language).**
+
+WSDL describes the available services, operations and communication details of a web service.
+
+**Important characteristics:**
+
+- SOAP uses XML to exchange information.
+- It uses WSDL to describe web services.
+- It commonly invokes services through RPC-style operations.
+- It supports multiple transport protocols and bindings, such as HTTP and SMTP. FTP can also be used in certain integrations.
+- It provides standardized security features through specifications such as WS-Security.
+
+**Limitations of SOAP:**
+
+- SOAP messages use XML, which can be more complex and verbose.
+- Parsing XML can require more processing.
+- Transferring XML data over a network can require more bandwidth.
+- Implementing SOAP-based web services can be difficult compared with simpler web API approaches.
+
+**Note:**
+
+Because of its comparatively complex structure, larger message size and implementation requirements, SOAP is less commonly chosen for simple modern web APIs.
+
+However, SOAP is still used in some enterprise applications where its standardized messaging and security features are required.
+
+### 3.2 RESTful Web Services
+
+REST stands for **Representational State Transfer**.
+
+REST is an architectural style for designing web services and APIs.
+
+It means that each resource is identified by a unique URL (URI).
+
+We can perform different operations on these resources using HTTP methods.
+
+**Common HTTP operations:**
+
+| HTTP Method | Purpose |
+|---|---|
+| GET | Retrieve resource information |
+| POST | Create a new resource |
+| PUT | Update a complete resource |
+| PATCH | Update part of a resource |
+| DELETE | Delete a resource |
+
+**Example:**
+
+```text
+GET     /api/customers/
+POST    /api/customers/
+GET     /api/customers/1/
+PUT     /api/customers/1/
+PATCH   /api/customers/1/
+DELETE  /api/customers/1/
+```
+
+**Important characteristics:**
+
+- REST APIs commonly exchange data in JSON format.
+- They can also support XML, plain text and other formats.
+- JSON is generally easy to read and process.
+- JSON messages are often smaller than equivalent XML messages.
+- REST APIs are generally easier to develop and integrate.
+- RESTful web services commonly use HTTP.
+
+**Limitations of REST:**
+
+- REST does not provide the same standardized security specifications as SOAP by default. Security must be implemented using suitable authentication, authorization, HTTPS and other security mechanisms.
+- REST is commonly used over HTTP, although REST itself is not limited to a particular transport protocol.
+
+**Note:**
+
+Because of their lightweight messages, flexible architecture, easier development and widespread JSON support, RESTful web services are commonly used for modern web and mobile applications.
+
+---
+
+## 4. Differences Between SOAP and REST
+
+| SOAP | REST |
+|---|---|
+| XML-based messaging protocol. | Architectural style, not a protocol. |
+| Uses WSDL to describe services and communication details. | Uses resource URLs and HTTP methods. |
+| Commonly invokes services through RPC-style operations. | Accesses resources through URLs and HTTP methods. |
+| Messages are generally more complex and less human-friendly. | Can return readable formats such as JSON, XML or plain text. |
+| Comparatively heavyweight. | Generally lightweight. |
+| XML messages can require more bandwidth. | JSON messages generally require less bandwidth than equivalent XML messages. |
+| Supports multiple transport protocols and bindings, such as HTTP and SMTP. | Commonly uses HTTP. |
+| Can involve additional processing overhead. | Often provides better performance for lightweight API communication. |
+| Provides standardized security specifications such as WS-Security. | Security depends on the authentication, authorization and transport security implemented. |
+
+**Note: Historical examples of SOAP and REST adoption**
+
+- Google: Many older Google web services used SOAP.
+- Yahoo: Several older Yahoo services used REST.
+- eBay and Amazon: Historically provided services using both SOAP and REST.
+
+These are historical examples, not a description of all their current APIs.
+
+---
+
+## 5. Web Service Provider vs Web Service Consumer
+
+### Web Service Provider
+
+The application that provides web services or exposes APIs is called a **Web Service Provider**.
+
+### Web Service Consumer
+
+The application that consumes web services or uses data through APIs is called a **Web Service Consumer**.
+
+### Real-life example: BookMyShow and Payment Gateway
+
+Imagine you are booking a movie ticket using the BookMyShow application.
+
+To complete your booking, BookMyShow communicates with a payment gateway application.
+
+**How does it work?**
+
+1. The customer selects a movie ticket.
+2. BookMyShow sends a payment request to the payment gateway.
+3. The payment gateway processes the payment.
+4. The payment gateway sends the payment result back to BookMyShow.
+5. BookMyShow displays the payment status.
+
+**Provider vs Consumer**
+
+| Application | Role |
+|---|---|
+| BookMyShow | Web Service Consumer |
+| Payment Gateway | Web Service Provider |
+
+**Important:** The payment gateway acts as the Web Service Provider because it provides the payment service. BookMyShow acts as the Web Service Consumer because it uses that service.
+
+---
+
+## 6. What is a REST API?
 
 REST stands for **Representational State Transfer**.
 
@@ -104,7 +284,7 @@ These endpoints represent operations on customer resources.
 
 ---
 
-## 3. What is JSON?
+## 7. What is JSON?
 
 JSON stands for **JavaScript Object Notation**.
 
@@ -146,7 +326,7 @@ Angular receives this JSON data and displays the customer information in a table
 
 ---
 
-## 4. What Happens When Angular Calls a Django API?
+## 8. What Happens When Angular Calls a Django API?
 
 Imagine Angular wants to retrieve all customer records from Django.
 
@@ -232,11 +412,12 @@ Display Customer Records
 
 ---
 
-## 5. What is Django REST Framework (DRF)?
+## 9. What is Django REST Framework (DRF)?
 
 Django REST Framework (DRF) is a powerful third-party Python package built on top of Django for developing Web APIs.
 
 Django already provides:
+
 - Models
 - Views
 - URL routing
@@ -261,6 +442,7 @@ DRF provides ready-made tools for these tasks.
 Imagine you are building a Customer Management System.
 
 You need to:
+
 - Add customer details.
 - Retrieve customer details.
 - Update customer information.
@@ -274,7 +456,7 @@ You could build these features manually using normal Django views, but DRF provi
 
 ---
 
-## 6. Django vs Django REST Framework
+## 10. Django vs Django REST Framework
 
 | Django | Django REST Framework |
 |---|---|
@@ -289,13 +471,13 @@ You could build these features manually using normal Django views, but DRF provi
 
 ---
 
-## 7. Difference Between a Normal Django View and a DRF View
+## 11. Difference Between a Normal Django View and a DRF View
 
 Both normal Django views and DRF views can be used to create APIs.
 
 However, DRF provides additional API-related functionality.
 
-### 7.1 Normal Django View
+### 11.1 Normal Django View
 
 Django provides `JsonResponse` to return JSON data.
 
@@ -320,7 +502,7 @@ def customer_list(request):
 - `safe=False` allows us to return a list instead of a dictionary.
 - By default, `JsonResponse` expects a dictionary.
 
-### 7.2 Django REST Framework View
+### 11.2 Django REST Framework View
 
 DRF provides its own `Response` class and API view decorators.
 
@@ -366,7 +548,7 @@ You could implement these features manually using normal Django views, but DRF p
 
 ---
 
-## 8. What is an API Endpoint?
+## 12. What is an API Endpoint?
 
 An API endpoint is a specific URL through which an application accesses a particular API resource or operation.
 
@@ -376,7 +558,7 @@ An API endpoint is a specific URL through which an application accesses a partic
 http://127.0.0.1:8000/api/customers/
 ```
 
-Here:
+**Understanding the URL:**
 
 | Part | Meaning |
 |---|---|
@@ -392,6 +574,7 @@ GET     http://127.0.0.1:8000/api/customers/
 POST    http://127.0.0.1:8000/api/customers/
 GET     http://127.0.0.1:8000/api/customers/1/
 PUT     http://127.0.0.1:8000/api/customers/1/
+PATCH   http://127.0.0.1:8000/api/customers/1/
 DELETE  http://127.0.0.1:8000/api/customers/1/
 ```
 
@@ -409,10 +592,16 @@ The HTTP method determines what operation is performed on the endpoint.
 ## Important Points to Remember
 
 1. **API:** Allows different software applications to communicate.
-2. **REST:** An architectural style for designing web APIs.
-3. **JSON:** A data format used to exchange information.
-4. **Django:** A Python web framework.
-5. **DRF:** A toolkit built on Django for developing Web APIs.
-6. **Serializer:** Converts complex Django data into Python data suitable for rendering and validates incoming data.
-7. **API Endpoint:** A URL used to access a particular API resource or operation.
-8. **HTTP Methods:** GET, POST, PUT, PATCH and DELETE define common API operations.
+2. **Web API:** Allows applications to communicate over the web using HTTP.
+3. **Web Service:** Provides services and information to other applications over a network.
+4. **SOAP:** An XML-based messaging protocol for web services.
+5. **WSDL:** Describes SOAP-based web services and their operations.
+6. **REST:** An architectural style for designing web APIs.
+7. **JSON:** A data format used to exchange information.
+8. **Django:** A Python web framework.
+9. **DRF:** A toolkit built on Django for developing Web APIs.
+10. **Serializer:** Converts complex Django data into Python data suitable for rendering and validates incoming data.
+11. **API Endpoint:** A URL used to access a particular API resource or operation.
+12. **HTTP Methods:** GET, POST, PUT, PATCH and DELETE define common API operations.
+13. **Web Service Provider:** The application that provides a web service.
+14. **Web Service Consumer:** The application that consumes a web service.
