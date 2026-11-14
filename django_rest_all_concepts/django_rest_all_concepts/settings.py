@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Third-party apps
     "django_filters",
     'app_001_fisrt',
+    'app_002_mixins',
 ]
 
 MIDDLEWARE = [
