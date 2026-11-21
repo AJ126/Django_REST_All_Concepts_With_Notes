@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'app_001_fisrt',
     'app_002_mixins',
     'app_003_serialization',
+    'app_004_modelSerialization',
 ]
 
 MIDDLEWARE = [
