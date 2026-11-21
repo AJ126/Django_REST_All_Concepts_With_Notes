@@ -24,4 +24,5 @@ urlpatterns = [
     path('mixinsapi/', include('app_002_mixins.urls')),
     path('serializationapi/', include('app_003_serialization.urls')),
     path('modelserializationapi/', include('app_004_modelSerialization.urls')),
+    path('viewsapi/', include('app_005_views.urls')),
 ]

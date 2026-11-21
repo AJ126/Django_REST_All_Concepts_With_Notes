@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'app_002_mixins',
     'app_003_serialization',
     'app_004_modelSerialization',
+    'app_005_views',
 ]
 
 MIDDLEWARE = [
