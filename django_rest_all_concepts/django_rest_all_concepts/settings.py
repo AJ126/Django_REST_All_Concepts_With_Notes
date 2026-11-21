@@ -41,13 +41,18 @@ INSTALLED_APPS = [
     "rest_framework",
     # Third-party apps
     "django_filters",
+    # CORS headers
+    "corsheaders",
     'app_001_fisrt',
     'app_002_mixins',
+    'app_003_serialization',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # CORS middleware
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -131,3 +136,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+#Allow your Angular frontend:
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+]

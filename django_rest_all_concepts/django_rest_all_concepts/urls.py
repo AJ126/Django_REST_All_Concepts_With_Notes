@@ -19,6 +19,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('apiauth/', include('rest_framework.urls')),
     path('firstapi/', include('app_001_fisrt.urls')),
     path('mixinsapi/', include('app_002_mixins.urls')),
+    path('serializationapi/', include('app_003_serialization.urls')),
 ]

@@ -16,11 +16,9 @@ while operation not in ["GET", "POST", "PUT", "DELETE"]:
 
 if operation == "GET":
     id = input("Enter ID (leave blank for all): ")
-    print('id.....', id)
     if id is not None and id != "":
         response = requests.get(f"{base_url}{endpoint}{id}/")
     else:
-        print('else.....')
         response = requests.get(f"{base_url}{endpoint}")
     print(response.json())
 
